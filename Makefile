@@ -6,11 +6,11 @@
 #    By: lelderbe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/08 12:49:23 by lelderbe          #+#    #+#              #
-#    Updated: 2021/03/08 13:05:08 by lelderbe         ###   ########.fr        #
+#    Updated: 2021/03/12 15:09:29 by lelderbe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		= 
+SRCS		= ft_strlen.s
 
 B_SRCS		= 
 
@@ -43,7 +43,7 @@ CFLAGS		= -Wall -Wextra -Werror
 ASMFLAGS	= -f macho64
 
 %.o:		%.s ${HEADERS}
-			${CC} ${CFLAGS} -c $< -o ${<:.s=.o}
+			${ASMCC} ${ASMFLAGS} $< -o ${<:.s=.o}
 
 ${NAME}:	${OBJS}
 			${AR} ${NAME} ${OBJS}
