@@ -1,7 +1,7 @@
-global	ft_strlen
+global	_ft_strlen
 
 section .text
-ft_strlen:
+_ft_strlen:
 		push rcx
 		mov rcx, 0		; count = 0
 loop:
