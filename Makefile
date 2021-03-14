@@ -6,11 +6,11 @@
 #    By: lelderbe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/08 12:49:23 by lelderbe          #+#    #+#              #
-#    Updated: 2021/03/14 14:24:26 by lelderbe         ###   ########.fr        #
+#    Updated: 2021/03/14 18:03:44 by lelderbe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		= ft_strlen.s
+SRCS		= ft_strlen.s ft_strcpy.s ft_strcmp.s
 
 B_SRCS		= 
 

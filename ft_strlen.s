@@ -1,16 +1,14 @@
-global	_ft_strlen
+global	_ft_strlen			; ft_strlen(const char *s)
 
 section .text
 _ft_strlen:
-		;push rcx
-		mov rcx, 0		; count = 0
+		xor rcx, rcx		; count = 0
 loop:
 		cmp byte [rdi], 0	; while *s != 0
 		jz done
-		inc rcx			; count++
-		inc rdi			; s++
+		inc rcx				; count++
+		inc rdi				; s++
 		jmp loop
 done:
 		mov rax, rcx	; return (count)
-		;pop rcx
 		ret

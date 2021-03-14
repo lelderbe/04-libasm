@@ -6,7 +6,7 @@
 /*   By: lelderbe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 14:54:06 by lelderbe          #+#    #+#             */
-/*   Updated: 2021/03/12 15:17:13 by lelderbe         ###   ########.fr       */
+/*   Updated: 2021/03/14 18:07:17 by lelderbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,7 @@
 # include <stddef.h>
 
 size_t		ft_strlen(const char *s);
+char		*ft_strcpy(char * dst, const char * src);
+int			ft_strcmp(const char *s1, const char *s2);
 
 #endif
