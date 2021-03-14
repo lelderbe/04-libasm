@@ -1,7 +1,7 @@
-global	_ft_strcmp					; ft_strcmp(const char *s1, const char *s2)
+global	ft_strcmp					; ft_strcmp(const char *s1, const char *s2)
 
 section .text
-_ft_strcmp:
+ft_strcmp:
 		xor rax, rax				; ret = 0
 loop:
 		mov al, byte [rdi]

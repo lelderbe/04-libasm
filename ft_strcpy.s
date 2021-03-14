@@ -1,7 +1,7 @@
-global	_ft_strcpy			; ft_strcpy(char *dst, const char *src)
+global	ft_strcpy			; ft_strcpy(char *dst, const char *src)
 
 section .text
-_ft_strcpy:
+ft_strcpy:
 		push rdi			; save *dst
 loop:
 		mov al, byte [rsi]

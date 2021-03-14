@@ -42,6 +42,10 @@ CFLAGS		= -Wall -Wextra -Werror -g
 
 ASMFLAGS	= -f macho64 -g
 
+ifeq ($(shell uname -s), Linux)
+ASMFLAGS	= -f elf64 -g
+endif
+
 %.o:		%.s ${HEADERS}
 			${ASMCC} ${ASMFLAGS} $< -o ${<:.s=.o}
 
@@ -69,10 +73,10 @@ re:			fclean all
 
 test:		all
 			${CC} ${CFLAGS} -c test.c -o test.o
-			${CC} ${CFLAGS} -L. -lasm test.o -o ${TEST_NAME}
+			${CC} ${CFLAGS} test.o -L. -lasm -o ${TEST_NAME}
 
 bonus_test:	bonus
 			${CC} ${CFLAGS} -c bonus_test.c -o bonus_test.o
-			${CC} ${CFLAGS} -L. -lasm bonus_test.o -o ${TEST_BNAME}
+			${CC} ${CFLAGS} bonus_test.o -L. -lasm -o ${TEST_BNAME}
 
 .PHONY:		all clean fclean re
