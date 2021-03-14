@@ -6,7 +6,7 @@
 #    By: lelderbe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/08 12:49:23 by lelderbe          #+#    #+#              #
-#    Updated: 2021/03/12 15:31:44 by lelderbe         ###   ########.fr        #
+#    Updated: 2021/03/14 14:24:26 by lelderbe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,8 @@ C_OBJS		= ${SRCS:.s=.o}
 B_OBJS		= ${B_SRCS:.s=.o}
 
 NAME		= libasm.a
-TEST_NAME	= test
-TEST_BNAME	= bonus_test
+TEST_NAME	= test.out
+TEST_BNAME	= bonus_test.out
 
 CC			= gcc
 
@@ -38,15 +38,16 @@ AR			= ar rc
 
 RM			= rm -f
 
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -g
 
-ASMFLAGS	= -f macho64
+ASMFLAGS	= -f macho64 -g
 
 %.o:		%.s ${HEADERS}
 			${ASMCC} ${ASMFLAGS} $< -o ${<:.s=.o}
 
 ${NAME}:	${OBJS}
 			${AR} ${NAME} ${OBJS}
+			ranlib ${NAME}
 
 all:		${NAME}
 
@@ -56,9 +57,13 @@ bonus:
 clean:
 			${RM} ${OBJS}
 			${RM} ${B_OBJS}
+			${RM} test.o
+			${RM} bonus_test.o
 
 fclean:		clean
 			${RM} ${NAME}
+			${RM} ${TEST_NAME}
+			${RM} ${TEST_BNAME}
 
 re:			fclean all
 
