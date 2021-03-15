@@ -1,16 +1,16 @@
-global	ft_strcpy			; ft_strcpy(char *dst, const char *src)
+global	_ft_strcpy			; ft_strcpy(char *dst, const char *src)
 
 section .text
-ft_strcpy:
-		push rdi			; save *dst
+_ft_strcpy:
+		push rdi			; save dst pointer
 loop:
-		mov al, byte [rsi]
-		mov byte [rdi], al
-		cmp al, 0
-		jz done
-		inc rdi
-		inc rsi
-		jmp loop
+		mov al, byte [rsi]	; al <- *src
+		mov byte [rdi], al	; al -> *dst
+		cmp al, 0			; was it \0?
+		jz done				; if so - exit
+		inc rdi				; dst++
+		inc rsi				; src++
+		jmp loop			; do repeat
 done:
-		pop rax
+		pop rax				; return (dst)
 		ret

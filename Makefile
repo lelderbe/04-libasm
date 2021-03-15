@@ -6,15 +6,15 @@
 #    By: lelderbe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/08 12:49:23 by lelderbe          #+#    #+#              #
-#    Updated: 2021/03/14 18:03:44 by lelderbe         ###   ########.fr        #
+#    Updated: 2021/03/15 21:05:58 by lelderbe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		= ft_strlen.s ft_strcpy.s ft_strcmp.s
+SRCS		= ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s ft_strdup.s
 
-B_SRCS		= 
+B_SRCS		= ft_list_size.s ft_list_push_front.s
 
-HEADERS		= libasm.h
+HEADERS		= libasm.h libasm_bonus.h
 
 ifdef BONUS
 	OBJS = ${C_OBJS} ${B_OBJS}
@@ -23,12 +23,12 @@ else
 endif
 
 C_OBJS		= ${SRCS:.s=.o}
-
 B_OBJS		= ${B_SRCS:.s=.o}
 
 NAME		= libasm.a
 TEST_NAME	= test.out
 TEST_BNAME	= bonus_test.out
+TEST_TEXT	= test.txt
 
 CC			= gcc
 
@@ -68,15 +68,18 @@ fclean:		clean
 			${RM} ${NAME}
 			${RM} ${TEST_NAME}
 			${RM} ${TEST_BNAME}
+			${RM} ${TEST_TEXT}
 
 re:			fclean all
 
 test:		all
 			${CC} ${CFLAGS} -c test.c -o test.o
 			${CC} ${CFLAGS} test.o -L. -lasm -o ${TEST_NAME}
+			echo "ABCDEF1234567890\c" > ${TEST_TEXT}
 
 bonus_test:	bonus
 			${CC} ${CFLAGS} -c bonus_test.c -o bonus_test.o
 			${CC} ${CFLAGS} bonus_test.o -L. -lasm -o ${TEST_BNAME}
+			echo "ABCDEF1234567890\c" > ${TEST_TEXT}
 
 .PHONY:		all clean fclean re

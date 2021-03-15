@@ -1,21 +1,21 @@
-global	ft_strcmp					; ft_strcmp(const char *s1, const char *s2)
+global	_ft_strcmp					; ft_strcmp(const char *s1, const char *s2)
 
 section .text
-ft_strcmp:
-		xor rax, rax				; ret = 0
+_ft_strcmp:
+		xor rax, rax				; *s1
+		xor rcx, rcx				; *s2
 loop:
-		mov al, byte [rdi]
-		cmp al, 0
-		jz done
-		cmp byte [rsi], 0
-		jz done
-		;cmp byte [rdi], byte [rsi]
-		cmp al, byte [rsi]
-		jnz done
-		inc rdi
-		inc rsi
-		jmp loop
+		mov al, byte [rdi]			; al <- *s1
+		mov cl, byte [rsi]			; cl <- *s2
+		cmp al, 0					; al is \0?
+		jz done						; exit then
+		cmp cl, 0					; cl is \0?
+		jz done						; exit then
+		cmp al, cl					; al == cl ?
+		jnz done					; exit if not
+		inc rdi						; s1++
+		inc rsi						; s2++
+		jmp loop					; check next byte
 done:
-		sub al, byte [rsi]
-		;adc al, 255
+		sub rax, rcx				; return (*s1 - *s2)
 		ret
