@@ -6,7 +6,7 @@
 /*   By: lelderbe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 20:17:03 by lelderbe          #+#    #+#             */
-/*   Updated: 2021/03/15 22:20:40 by lelderbe         ###   ########.fr       */
+/*   Updated: 2021/03/15 22:38:51 by lelderbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ ssize_t				ft_read(int fildes, void *buf, size_t nbyte);
 char				*ft_strdup(const char *s1);
 t_list				*ft_list_create_elem(void *data);
 int					ft_list_size(t_list *lst);
-void				ft_list_push_front(t_list **lst, t_list *new);
+//void				ft_list_push_front(t_list **lst, t_list *new);
+void				ft_list_push_front(t_list **lst, void *data);
 
 #endif
