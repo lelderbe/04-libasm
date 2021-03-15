@@ -6,13 +6,13 @@
 #    By: lelderbe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/08 12:49:23 by lelderbe          #+#    #+#              #
-#    Updated: 2021/03/15 21:05:58 by lelderbe         ###   ########.fr        #
+#    Updated: 2021/03/15 22:18:47 by lelderbe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS		= ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s ft_strdup.s
 
-B_SRCS		= ft_list_size.s ft_list_push_front.s
+B_SRCS		= ft_list_size.s ft_list_push_front.s ft_list_create_elem.s
 
 HEADERS		= libasm.h libasm_bonus.h
 

@@ -6,7 +6,7 @@
 /*   By: lelderbe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 20:25:28 by lelderbe          #+#    #+#             */
-/*   Updated: 2021/03/15 21:23:11 by lelderbe         ###   ########.fr       */
+/*   Updated: 2021/03/15 22:19:28 by lelderbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int			main(int argc, char **argv)
 	t_list	*elem4;
 	t_list	*elem5;
 	t_list	*elem6;
+	t_list	*elem7;
 
 	elem1 = malloc(sizeof(t_list));
 	elem2 = malloc(sizeof(t_list));
@@ -81,6 +82,7 @@ int			main(int argc, char **argv)
 	elem4->data = strdup("444");
 	elem5->data = strdup("555");
 	elem6->data = strdup("666");
+	elem7 = ft_list_create_elem(ft_strdup("777"));
 
 	head = elem1;
 	elem1->next = elem2;
@@ -112,6 +114,7 @@ int			main(int argc, char **argv)
 		test_ft_list_push_front(0, elem6);
 		head = 0;
 		test_ft_list_push_front(&head, elem6);
+		test_ft_list_push_front(&head, elem7);
 	}
 
 	return (0);

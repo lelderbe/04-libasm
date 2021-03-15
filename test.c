@@ -6,7 +6,7 @@
 /*   By: lelderbe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 13:05:30 by lelderbe          #+#    #+#             */
-/*   Updated: 2021/03/15 21:44:38 by lelderbe         ###   ########.fr       */
+/*   Updated: 2021/03/15 22:22:11 by lelderbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,25 +100,7 @@ static void	test_strdup(const char *s)
 	printf("expect: '%s', addr: %p\n", expect, expect);
 	printf("errno: %d, err msg: %s\n\n", errno, strerror(errno));
 }
-/*
-static void	test_fail_strdup(void)
-{
-	char	*expect;
-	char	*result;
 
-	errno = 0;
-	printf("-------ft_strdup--------------------\n");
-	result = ft_strdup(s);
-	printf("result: '%s', addr: %p\n", result, result);
-	printf("errno: %d, err msg: %s\n", errno, strerror(errno));
-
-	errno = 0;
-	printf("-------strdup-----------------------\n");
-	expect = strdup(s);
-	printf("expect: '%s', addr: %p\n", expect, expect);
-	printf("errno: %d, err msg: %s\n\n", errno, strerror(errno));
-}
-*/
 int			main(int argc, char **argv)
 {
 	int		fd;
@@ -133,6 +115,7 @@ int			main(int argc, char **argv)
 	{
 		test_strlen("abc");
 		test_strlen("");
+		test_strlen("A value of AUE_NULL means no auditing, but it also means that there is no audit event for the call at this time. For the case where the event exists, but we don't want auditing, the event should be #defined to AUE_NULL in audit_kevents.h.");
 	}
 	else if (strcmp("ft_strcmp", argv[1]) == 0)
 	{
@@ -146,17 +129,21 @@ int			main(int argc, char **argv)
 	}
 	else if (strcmp("ft_strcpy", argv[1]) == 0)
 	{
+		test_strcpy("", "");
 		test_strcpy("123456789", "abc");
 		test_strcpy("123456789", "");
 		test_strcpy("123456789", "AAA");
 		test_strcpy("12", "ZZZ");
+		test_strcpy("A value of AUE_NULL means no auditing, but it also means that there is no audit event for the call at this time. For the case where the event exists, but we don't want auditing, the event should be #defined to AUE_NULL in audit_kevents.h.", "**************************************************************************#*");
 	}
 	else if (strcmp("ft_write", argv[1]) == 0)
 	{
 		test_write(1, "abc12345");
-		test_write(1, "A value of AUE_NULL means no auditing, but it also means that there is no audit event for the call at this time. For the case where the event exists, but we don't want auditing, the event should be #defined to AUE_NULL in audit_kevents.h.");
 		test_write(-2, "abc12345");
 		test_write(1, "abc12345");
+		fd = open("test.txt", O_WRONLY);
+		test_write(fd, "**********#*");
+
 	}
 	else if (strcmp("ft_read", argv[1]) == 0)
 	{
@@ -209,10 +196,12 @@ int			main(int argc, char **argv)
 		test_read(fd, buf, -5);
 		close(fd);
 		bzero(buf, 20);
+
+		test_ft_read(0, buf, 5);
+		test_read(0, buf, 5);
 	}
 	else if (strcmp("ft_strdup", argv[1]) == 0)
 	{
-
 		//char *b = malloc(-1);
 		//printf("b: %p\n", b);
 		//printf("errno: %d, err msg: %s\n", errno, strerror(errno));
@@ -220,7 +209,6 @@ int			main(int argc, char **argv)
 		test_strdup("abc");
 		test_strdup("A value of AUE_NULL means no auditing, but it also means that there is no audit event for the call at this time. For the case where the event exists, but we don't want auditing, the event should be #defined to AUE_NULL in audit_kevents.h.");
 		test_strdup("");
-		//test_fail_strdup();
 	}
 
 	return (0);
