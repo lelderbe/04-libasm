@@ -6,7 +6,7 @@
 /*   By: lelderbe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 13:05:30 by lelderbe          #+#    #+#             */
-/*   Updated: 2021/03/15 19:15:27 by lelderbe         ###   ########.fr       */
+/*   Updated: 2021/03/15 21:44:38 by lelderbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,9 @@ int			main(int argc, char **argv)
 	}
 	else if (strcmp("ft_strcmp", argv[1]) == 0)
 	{
+		test_strcmp("", "");
+		test_strcmp("", "abc");
+		test_strcmp("abc", "");
 		test_strcmp("abc", "abc");
 		test_strcmp("Abc", "abc");
 		test_strcmp("abc", "abc123");
