@@ -11,6 +11,8 @@ _ft_list_push_front:
 		mov rdi, rsi
 		call _ft_list_create_elem
 		pop rdi
+		cmp rax, 0				; got a new element?
+		jz done
 		mov rsi, rax			; rsi <- new
 		mov rax, [rdi]			; *lst -> rax
 		mov [rsi + 8], rax		; new->next = *lst
