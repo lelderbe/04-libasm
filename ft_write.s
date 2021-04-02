@@ -8,8 +8,9 @@ _ft_write:
 		jnc done				; no CF - no error
 		push rax				; save error code
 		call ___error			; get int *errno for error code in rax
-		pop qword [rax]			; put error code to errno
+		;pop qword [rax]			; put error code to errno
+		pop rcx					; pop error code
+		mov dword [rax], ecx	; ecx -> *errno
 		mov rax, -1				; return -1 - error
 done:
 		ret
-
